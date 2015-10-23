@@ -36,4 +36,12 @@ console.log('Hello, World');
 
   //Level 5
     //Drake: https://media3.giphy.com/media/3o85xJohCZUc524lSU/200.gif
-    //Beyonce: https://media0.giphy.com/media/RX7N03MEUafW8/200.gif 
+    //Beyonce: https://media0.giphy.com/media/RX7N03MEUafW8/200.gif
+
+  //Background Images 
+
+    // Level 1 "Jumprope" : https://media4.giphy.com/media/4OhoMMrEiYAqA/200.gif
+    // Level 2 " tiny robot" : https://media0.giphy.com/media/RUdFH2bBntLj2/200.gif 
+    // Level 3 "Rocketship" : https://media3.giphy.com/media/uBFfW0SmxojaU/200.gif 
+    // Level 4 "MC Hammer" :  https://media3.giphy.com/media/GPuVXyAmkMco0/200.gif 
+    // Level 5: https://media0.giphy.com/media/GcfImbgkZux6E/200.gif
