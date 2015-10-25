@@ -3,9 +3,10 @@ import _ from 'underscore';
 import moment from 'moment';
 
 
-
+// Function for entire game
 ;(function() {
 
+  // Constructor function for canvas item
   var AlwaysOnBeat = function(canvasId) {
     var canvas = document.getElementById('screen');
     var screen = canvas.getContext('2d');
@@ -25,17 +26,25 @@ import moment from 'moment';
     console.log('Hello, World!');
   };
 
+  // Prototype of constructor function
   AlwaysOnBeat.prototype = {
     update: function() {
       var self = this;
+
+      // var notCollidingWithAnything = function(b1) {
+      //   return self.bodies.filter(function(b2) { 
+      //     return colliding(b1, b2); }).length === 0;
+      // };
+
+      // this.bodies = this.bodies.filter(notCollidingWithAnything);
 
       for (var i = 0; i < this.bodies.length; i++) {
         this.bodies[i].update();
       }
 
-
     },
 
+    // Draws Character item on to the screen
     draw: function(screen, gameSize) {
       screen.clearRect(0, 0, gameSize.x, gameSize.y);
 
@@ -45,20 +54,24 @@ import moment from 'moment';
     },
   };
 
+  // Player constructor function 
   var Player = function(game, gameSize) {
     this.game = game;
     this.size = {x: 250, y: 250};
     this.center = { x: gameSize.x / 2, y: gameSize.y - this.size.y * 2 };
     
     this.keyboarder = new Keyboarder();
+    console.log('What a beautiful Day');
 
 
   };
 
+  // Prototype of constructor function
   Player.prototype = {
+
     update: function() {
       if (this.keyboarder.isDown(this.keyboarder.KEYS.RIGHT)) {
-        this.center.x += 10;
+        this.center.x += 10; 
       } 
       if (this.keyboarder.isDown(this.keyboarder.KEYS.LEFT)) {
         this.center.x -= 10;
@@ -72,7 +85,7 @@ import moment from 'moment';
     },
   };
 
-
+  // Constructor function for keyboard commands
   var Keyboarder = function() {
     var keyState = {};
 
@@ -89,17 +102,42 @@ import moment from 'moment';
     };
 
     this.KEYS = { LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40};
+    console.log('As long as it keeps shinning');
   };
 
+  // Places the Players automatically in Quadrant I
   var drawRect = function(screen, body) {
+    // Quadrant I
     screen.fillRect(body.center.x - body.size.x, 
       body.size.y - body.center.y - body.size.y ,
       body.size.x, body.size.y);
+    
+    // Quadrant II
+    // screen.fillRect(body.center.x, 
+    //   body.size.y - body.center.y - body.size.y ,
+    //   body.size.x, body.size.y);
+    
+    // Quadrant III
+    // screen.fillRect(body.center.x, 
+    //   body.size.y - body.center.y,
+    //   body.size.x, body.size.y);
+
+
+    
+    // Quadrant IV
+    // screen.fillRect(body.center.x - body.size.x, 
+    //   body.size.y - body.center.y,
+    //   body.size.x, body.size.y);
+
   };
 
+
+  // Invokes the AlwaysOnBeat constructor function once the page is loaded
   window.onload = function() {
     new AlwaysOnBeat('screen');
   };
+
+
 
 })();
 
