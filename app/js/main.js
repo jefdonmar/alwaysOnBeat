@@ -108,8 +108,10 @@ var _moment2 = _interopRequireDefault(_moment);
   };
 
   // Places the Players automatically in Quadrant I
+  $drake: ' src: https://media3.giphy.com/media/unRa3ffljnuec/200.gif';
   var drawRect = function drawRect(screen, body) {
     // Quadrant I
+    screen.fillStyle = $drake;
     screen.fillRect(body.center.x - body.size.x, body.size.y - body.center.y - body.size.y, body.size.x, body.size.y);
 
     // Quadrant II
@@ -132,6 +134,30 @@ var _moment2 = _interopRequireDefault(_moment);
   window.onload = function () {
     new AlwaysOnBeat('screen');
   };
+
+  function newRound() {
+    var sequence = [1, 2, 1]; // red, green, red
+    animate(sequence);
+  }
+
+  function animate(sequence) {
+    var i = 0;
+    var interval = setInterval(function () {
+      lightUp(sequence[i]);
+
+      i++;
+      if (i >= sequence.length) {
+        clearInterval(interval);
+      }
+    }, 600);
+  }
+
+  function lightup(tile) {
+    var $tile = (0, _jquery2['default'])('[data-tile=' + tile + ']').addClass('lit');
+    window.setTimeout(function () {
+      $tile.removeClass('lit');
+    }, 300);
+  }
 })();
 
 },{"jquery":2,"moment":3,"underscore":4}],2:[function(require,module,exports){
