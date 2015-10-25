@@ -31,12 +31,6 @@ import moment from 'moment';
     update: function() {
       var self = this;
 
-      // var notCollidingWithAnything = function(b1) {
-      //   return self.bodies.filter(function(b2) { 
-      //     return colliding(b1, b2); }).length === 0;
-      // };
-
-      // this.bodies = this.bodies.filter(notCollidingWithAnything);
 
       for (var i = 0; i < this.bodies.length; i++) {
         this.bodies[i].update();
@@ -47,6 +41,7 @@ import moment from 'moment';
     // Draws Character item on to the screen
     draw: function(screen, gameSize) {
       screen.clearRect(0, 0, gameSize.x, gameSize.y);
+
 
       for (var i = 0; i < this.bodies.length; i++) {
         drawRect(screen, this.bodies[i]);
@@ -70,17 +65,21 @@ import moment from 'moment';
   Player.prototype = {
 
     update: function() {
-      if (this.keyboarder.isDown(this.keyboarder.KEYS.RIGHT)) {
-        this.center.x += 10; 
+      if (this.keyboarder.isDown(this.keyboarder.KEYS.RIGHT) & 
+        this.center.x <= 500) {
+        this.center.x = 500; 
+      }      
+      if (this.keyboarder.isDown(this.keyboarder.KEYS.LEFT) &
+        this.center.x >= 250) {
+        this.center.x = 250;
       } 
-      if (this.keyboarder.isDown(this.keyboarder.KEYS.LEFT)) {
-        this.center.x -= 10;
+      if (this.keyboarder.isDown(this.keyboarder.KEYS.DOWN) &
+        this.center.y >= -250) {
+        this.center.y = -250;
       } 
-      if (this.keyboarder.isDown(this.keyboarder.KEYS.DOWN)) {
-        this.center.y -= 10;
-      } 
-      if (this.keyboarder.isDown(this.keyboarder.KEYS.UP)) {
-        this.center.y += 10;
+      if (this.keyboarder.isDown(this.keyboarder.KEYS.UP) &
+        this.center.y <= 0) {
+        this.center.y = 0;
       } 
     },
   };
