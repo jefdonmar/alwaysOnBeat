@@ -3,4 +3,70 @@
 
 body {
   background: #e2ebf3;
+
+  #container{
+    position: relative; 
+
+    canvas {
+    border: 1px solid black;
+    margin-left: 50px;
+    margin-top: 30px;
+    position: absolute; 
+
+
+    }
+
+    .overlay {
+      background: white;
+      margin-left: 50px;
+      display: inline-block;
+      margin-top: 30px;
+      width: 500px;
+      height: 500px;
+
+
+      .column1 {
+      float: left;
+      width: 50%;
+      height: 100%;
+
+
+        #q1 {
+          border: 1px solid red;
+          width: 100%;
+          height: 50%;
+          
+        }
+
+        #q4 {
+          border: 1px solid green;
+          width: 100%;
+          height: 50%;
+         
+        }
+      }
+
+      .column2 {
+        float: right;
+        width: 50%;
+        height: 100%;
+        
+
+        #q2 {
+          border: 1px solid orange;
+          width: 100%;
+          height: 50%;
+        }
+
+        #q3 {
+          border: 1px solid purple;
+          width: 100%;
+          height: 50%;
+        }
+      }
+
+    }
+    
+  }
 }
+

@@ -1,3 +1,42 @@
 node_modules
 .DS_Store
 .divshot-cache
+
+
+var mainGameScreen = (function() {
+  var entities = [];
+
+  var numOfQuadrants = 4;
+
+  function start() {
+    for (var i = 0; i <= numOfQuadrants; i++) {
+      entities.push(numQuadrants(i * 10, i));
+    }
+  }
+
+  function draw(ctx) {
+    ctx.fillStyle = ;
+    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+    var entityIndex = entities.length - 1;
+    for (; entityIndex !== 0; entityIndex--) {
+      entities[entityIndex].draw(ctx);
+    }
+  }
+
+  function update(elapsed) {
+    var entityIndex = entities.length - 1;
+    for (; entityIndex !== 0; entityIndex--) {
+      entities[entityIndex].update(elapsed);
+    }
+  }
+
+  console.log('hi');
+
+  return {
+    draw: draw,
+    update: update,
+    start: start
+  };
+
+}());

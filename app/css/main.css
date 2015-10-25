@@ -2020,5 +2020,43 @@
 
 body {
   background: #e2ebf3; }
+  body #container {
+    position: relative; }
+    body #container canvas {
+      border: 1px solid black;
+      margin-left: 50px;
+      margin-top: 30px;
+      position: absolute; }
+    body #container .overlay {
+      background: white;
+      margin-left: 50px;
+      display: inline-block;
+      margin-top: 30px;
+      width: 500px;
+      height: 500px; }
+      body #container .overlay .column1 {
+        float: left;
+        width: 50%;
+        height: 100%; }
+        body #container .overlay .column1 #q1 {
+          border: 1px solid red;
+          width: 100%;
+          height: 50%; }
+        body #container .overlay .column1 #q4 {
+          border: 1px solid green;
+          width: 100%;
+          height: 50%; }
+      body #container .overlay .column2 {
+        float: right;
+        width: 50%;
+        height: 100%; }
+        body #container .overlay .column2 #q2 {
+          border: 1px solid orange;
+          width: 100%;
+          height: 50%; }
+        body #container .overlay .column2 #q3 {
+          border: 1px solid purple;
+          width: 100%;
+          height: 50%; }
 
 /*# sourceMappingURL=main.css.map */
