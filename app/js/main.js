@@ -56,26 +56,25 @@ var _moment2 = _interopRequireDefault(_moment);
 
   var Player = function Player(game, gameSize) {
     this.game = game;
-    this.size = { x: 15, y: 15 };
-    this.center = { x: gameSize.x / 2, y: gameSize.y / 2 - this.size.y * 2 };
+    this.size = { x: 250, y: 250 };
+    this.center = { x: gameSize.x / 2, y: gameSize.y - this.size.y * 2 };
 
     this.keyboarder = new Keyboarder();
   };
 
   Player.prototype = {
     update: function update() {
+      if (this.keyboarder.isDown(this.keyboarder.KEYS.RIGHT)) {
+        this.center.x += 10;
+      }
       if (this.keyboarder.isDown(this.keyboarder.KEYS.LEFT)) {
-
-        this.center.x -= 2;
-      } else if (this.keyboarder.isDown(this.keyboarder.KEYS.RIGHT)) {
-
-        this.center.x += 2;
-      } else if (this.keyboarder.isDown(this.keyboarder.KEYS.UP)) {
-
-        this.center.y -= 2;
-      } else if (this.keyboarder.isDown(this.keyboarder.KEYS.DOWN)) {
-
-        this.center.y += 2;
+        this.center.x -= 10;
+      }
+      if (this.keyboarder.isDown(this.keyboarder.KEYS.DOWN)) {
+        this.center.y -= 10;
+      }
+      if (this.keyboarder.isDown(this.keyboarder.KEYS.UP)) {
+        this.center.y += 10;
       }
     }
   };
@@ -95,11 +94,11 @@ var _moment2 = _interopRequireDefault(_moment);
       return keyState[keyCode] === true;
     };
 
-    this.KEYS = { LEFT: 37, RIGHT: 39 };
+    this.KEYS = { LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40 };
   };
 
   var drawRect = function drawRect(screen, body) {
-    screen.fillRect(body.center.x - body.size.x / 2, body.center.y - body.size.y / 2, body.size.x, body.size.y);
+    screen.fillRect(body.center.x - body.size.x, body.size.y - body.center.y - body.size.y, body.size.x, body.size.y);
   };
 
   window.onload = function () {
