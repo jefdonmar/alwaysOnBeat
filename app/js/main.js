@@ -15,7 +15,82 @@ var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
-console.log('Hello, World');
+;(function () {
+  var AlwaysOnBeat = function AlwaysOnBeat(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    var screen = canvas.getContext('2d');
+    var gameSize = { x: canvas.width, y: canvas.height };
+
+    this.bodies = [new Player(this, gameSize)];
+
+    var self = this;
+    var tick = function tick() {
+      self.update();
+      self.draw(screen, gameSize);
+      requestAnimationFrame(tick);
+    };
+
+    tick();
+    console.log('Hello, World!');
+  };
+
+  AlwaysOnBeat.prototype = {
+    update: function update() {
+      for (var i = 0; i < this.bodies.length; i++) {
+        this.bodies[i].update();
+      }
+    },
+
+    draw: function draw(screen, gameSize) {
+      for (var i = 0; i < this.bodies.length; i++) {
+        drawRect(screen, this.bodies[i]);
+      }
+    }
+  };
+
+  var Player = function Player(game, gameSize) {
+    this.game = game;
+    this.size = { x: 15, y: 15 };
+    this.center = { x: gameSize.x / 2, y: gameSize.y / 2 - this.size.x };
+    this.keyboarder = new Keyboarder();
+  };
+
+  Player.prototype = {
+    update: function update() {
+      if (this.keyboarder.isDown(this.keyboarder.KEYS.LEFT)) {
+        this.center.x -= 2;
+      } else if (this.keyboarder.isDown(this.keyboarder.KEYS.RIGHT)) {
+        this.center.x += 2;
+      }
+    }
+  };
+
+  var drawRect = function drawRect(screen, body) {
+    screen.fillRect(body.center.x - body.size.x / 2, body.center.y - body.size.y / 2, body.size.x, body.size.y);
+  };
+
+  var Keyboarder = function Keyboarder() {
+    var keyState = {};
+
+    window.onkeydown = function (e) {
+      keyState[e.keyCode] = true;
+    };
+
+    window.onkeyup = function (e) {
+      keyState[e.keyCode] = true;
+    };
+
+    this.isDown = function (keyCode) {
+      return keyState[keyCode] === true;
+    };
+
+    this.KEYS = { LEFT: 37, RIGHT: 39, SPACE: 32 };
+  };
+
+  window.onload = function () {
+    new AlwaysOnBeat('screen');
+  };
+})();
 
 },{"jquery":2,"moment":3,"underscore":4}],2:[function(require,module,exports){
 /*!
